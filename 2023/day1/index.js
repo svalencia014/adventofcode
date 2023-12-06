@@ -17,7 +17,7 @@ fs.readFile('./input.txt', (error, data) => {
   if (error) console.error(error);
   lines = data.toString().split('\n');
   for (let i = 0; i < lines.length; i++) {
-    let chars = (lines[i].match(/((?:\b\d+|\bone|two|three|four|five|six|seven|eight|nine\b)+)/g) + ',' + lines[i].match(/\d/g)).split(',');
+    let chars = (lines[i].match(/((?:\b\d+|\bone|two|three|four|five|six|seven|eight|nine\b){1})/g).toString()).split(',')
     if (chars[chars.length - 1] == 'null') {
       chars.pop()
     }
