@@ -29,12 +29,13 @@ fs.readFile('./input.txt', (error, data) => {
       linetotal[1] = numbers[linetotal[1]];
     }
     linetotal = linetotal[0] + linetotal[1]
+    total += parseInt(linetotal);
     console.log(`Line ${i + 1} input: ${lines[i]}`)
     console.log(`Line ${i + 1} chars: ${chars}`);
     console.log(`Line ${i + 1} total: ${linetotal}`);
+    console.log(`The total is now ${total}`)
     console.log('----------------------------------')
-    total += parseInt(linetotal);
-    linetotal = "";
+    linetotal = ""; 
   }
   console.log(`The Calibration Number is ${total}`);
 })
