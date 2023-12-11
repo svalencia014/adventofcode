@@ -17,7 +17,7 @@ fs.readFile('./input.txt', (error, data) => {
   if (error) console.error(error);
   lines = data.toString().split('\n');
   for (let i = 0; i < lines.length; i++) {
-    let chars = ((lines[i].replace('twone', '21')).match(/((?:\d{1}|one|two|three|four|five|six|seven|eight|nine){1})/g).toString()).split(',')
+    let chars = (lines[i].match(/((?:\d{1}|one|two|three|four|five|six|seven|eight|nine){1})/g).toString()).split(',')
     if (chars[chars.length - 1] == 'null') {
       chars.pop()
     }

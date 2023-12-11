@@ -2,6 +2,7 @@
 I ended up not being able to solve the problem with my own code. I used code from [devtails](https://devtails.xyz/adam/2023-advent-of-code-day-one) to solve the problem. I will spend time re-writing my code when I am caught up.
 
 ## Part 1
+- Part one was easy, only took about an hour and a half to implement.
 
 ---
 ## Part 2
