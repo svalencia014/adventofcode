@@ -1,43 +1,40 @@
 const fs = require('fs');
+let x = 0;
+let y = 0;
+let last = [0,0];
+let visited = [];
 let houses = 1;
-let last = '';
-const input = fs.readFile('./input.txt', (error, data) => {
+fs.readFile('./input.txt', (error, data) => {
   if (error) { console.error(`Line 5: ${error}`); return;}
   let directions = data.toString().split('');
   for (let i = 0; i < directions.length; i++) {
-    if (directions[i] == '^') {
-      if (last == 'v') {
-        return;
-      } else {
-        houses ++;
+    console.log(directions[i]);
+    switch(directions[i]) {
+      case '^': {
+        y++
+        break;
+      };
+      case 'v': {
+        y--;
+        break;
       }
-      last = directions[i];
-    } else if (directions[i] == 'v') {
-      if (last == '^') {
-        return;
-      } else {
-        houses ++;
+      case '>': {
+        x++;
+        break;
       }
-      last = directions[i];
-    } else if (directions[i] == '<') {
-      if (last == '>') {
-        return;
-      } else {
-        houses ++;
+      case '<': {
+        x--;
+        break;
       }
-      last = directions[i];
-    } else if (directions[i] == '>') {
-      if (last == '<') {
-        return;
-      } else {
-        houses ++;
-      }
-      last = directions[i];
     }
-    if (i === directions.length - 1) {
-      houses--;
+    for (const house in visited) {
+      console.log(house[0]);
     }
-    console.log(houses);
+    console.log(visited);
+    console.log(`Step ${(i) + 1}: ${[x,y]}`);
+    visited.push([x,y]);
+    last = [x,y];
   }
-  console.log(houses);
+  console.log(`Final coordinates: ${[x,y]}`);
+  console.log(`Visted ${houses} houses`);
 })
