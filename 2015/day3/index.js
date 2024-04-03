@@ -1,14 +1,13 @@
 const fs = require('fs');
 let x = 0;
 let y = 0;
-let last = [0,0];
+let last = false;
 let visited = [];
-let houses = 1;
+let houses = 0;
 fs.readFile('./input.txt', (error, data) => {
   if (error) { console.error(`Line 5: ${error}`); return;}
   let directions = data.toString().split('');
   for (let i = 0; i < directions.length; i++) {
-    console.log(directions[i]);
     switch(directions[i]) {
       case '^': {
         y++
@@ -27,13 +26,18 @@ fs.readFile('./input.txt', (error, data) => {
         break;
       }
     }
-    for (const house in visited) {
-      console.log(house[0]);
+    for (let j = 0; j < visited.length; j++) {
+      if (visited[j][0] == x && visited[j][1] == y) {
+        last = true;
+        break;
+      } 
     }
-    console.log(visited);
-    console.log(`Step ${(i) + 1}: ${[x,y]}`);
+    if (last != true) {
+      houses++
+    }
+    last = false;
     visited.push([x,y]);
-    last = [x,y];
+    console.log(`${i/directions.length * 100}% complete`)
   }
   console.log(`Final coordinates: ${[x,y]}`);
   console.log(`Visted ${houses} houses`);
