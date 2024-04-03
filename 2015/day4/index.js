@@ -1,6 +1,6 @@
 const fs = require('fs');
 const md5 = require('./md5');
-const input = fs.readFile('./input.txt', (error, data) => {
+fs.readFile('./input.txt', (error, data) => {
   if (error) { console.error(error); return; }
   let correctHash = false;
   let hash = ""
